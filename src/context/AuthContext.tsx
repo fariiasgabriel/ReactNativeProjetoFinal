@@ -1,5 +1,4 @@
-import { createContext, useState } from "react";
-import { Text, View } from "react-native";
+import React, { createContext, useState, ReactNode } from "react";
 
 interface AuthContextData {
   token: string | null;
@@ -13,7 +12,7 @@ export const AuthContext = createContext<AuthContextData>({
   logout: () => {},
 });
 
-export default function AuthProvider({ children }) {
+export default function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
 
   function logout() {

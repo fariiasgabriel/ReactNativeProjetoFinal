@@ -1,19 +1,21 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RotasApp } from '../../../App';
+
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+
+import { RootTabParamList } from '../../routes/AppRouter';
+
 import styles from './styles';
 
-type Props = NativeStackScreenProps<RotasApp, 'previsao'>;
+type Props = BottomTabScreenProps<RootTabParamList, 'Previsao'>;
 
 export default function Previsao({ route }: Props) {
-  // Recebe os dados da Home
   const { dias } = route.params;
 
   return (
     <FlatList
       data={dias}
-      keyExtractor={(item) => item.date}
+      keyExtractor={(item, index) => String(index)}
       renderItem={({ item }) => (
         <View style={styles.card}>
           <Text style={styles.dia}>{item.weekday}</Text>
