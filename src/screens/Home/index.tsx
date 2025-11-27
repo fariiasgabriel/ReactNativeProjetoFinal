@@ -12,7 +12,7 @@ export default function Home() {
   const [cidade, setCidade] = useState("Rio de Janeiro");
   const [buscar, setBuscar] = useState(false);
   const [clima, setClima] = useState<any>(null);
-  const CHAVE_API = "32a0fc0c";
+  const CHAVE_API = "e93151d4";
 
   useEffect(() => {
     if (buscar || !clima) {
