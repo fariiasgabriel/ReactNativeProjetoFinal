@@ -1,28 +1,70 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#EAF6FF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    padding: 20,
   },
+  
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+  },
+
+  overlay: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20,
+  },
+
   cidade: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontWeight: "bold",
+    marginTop: 20,
   },
+
+  emojiclima: {
+    fontSize: 60,
+    marginVertical: 10,
+    textAlign: "center",
+  },
+
   temperatura: {
     fontSize: 48,
-    fontWeight: 'bold',
-    color: '#0077B6',
+    fontWeight: "bold",
+    color: "#0077B6",
+    marginVertical: 10,
   },
+
   condicao: {
-    fontSize: 20,
-    marginTop: 10,
+    fontSize: 18,
+    color: "#555",
+    marginBottom: 20,
   },
+
+  input: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 15,
+    fontSize: 16,
+    backgroundColor: "#f9f9f9",
+  },
+
   link: {
-    marginTop: 20,
-    color: '#0077B6',
-    fontWeight: 'bold',
+    fontSize: 16,
+    color: "#0077B6",
+    marginTop: 10,
+    textDecorationLine: "underline",
   },
 });
+
+export default styles;
