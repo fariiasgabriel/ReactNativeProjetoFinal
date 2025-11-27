@@ -27,7 +27,7 @@ export default function Sobre() {
         Tecnologias usadas: React Native, TypeScript e API de Clima HG Brasil.
       </Text>
 
-      
+      // Participantes do Grupo
       <Text style={styles.subtitulo}>Desenvolvedores do Grupo:</Text>
       <Text style={styles.dev}>Irene</Text>
       <Text style={styles.dev}>Pâmela</Text>
