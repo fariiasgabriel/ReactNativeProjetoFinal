@@ -29,7 +29,7 @@ export default function AppRouter() {
       {!token ? (
         <>
           <Tab.Screen name="Login" component={Login} />
-          <Tab.Screen name="Cadastro" component={Cadastro} />
+          <Tab.Screen name="Cadastro" component={Cadastro} options={{tabBarItemStyle:{display: 'none'}}}/>
         </>
       ) : (
         <>
