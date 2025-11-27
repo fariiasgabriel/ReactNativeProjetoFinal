@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import api from "../../services/apiAutenticacao";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import styles from "./styles"; 
+import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import type { RootTabParamList } from '../../routes/AppRouter';
@@ -38,24 +38,28 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={require("../../../assets/icon.png")} />
+      <Image 
+        style={styles.logo} 
+        source={require("../../../assets/imagemPerfil.png")} 
+        resizeMode="contain"
+      />
 
       <View style={styles.areaInput}>
-        <TextInput 
-            placeholder="Seu email" 
-            value={email} 
-            onChangeText={setEmail} 
-            style={styles.input} 
+        <TextInput
+          placeholder="Seu email"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
         />
       </View>
 
       <View style={styles.areaInput}>
-        <TextInput 
-            placeholder="Sua senha" 
-            value={password} 
-            onChangeText={setPassword} 
-            style={styles.input} 
-            secureTextEntry 
+        <TextInput
+          placeholder="Sua senha"
+          value={password}
+          onChangeText={setPassword}
+          style={styles.input}
+          secureTextEntry
         />
       </View>
 
@@ -63,8 +67,13 @@ export default function Login() {
         <Text style={styles.submitText}>Login</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.submitButton} onPress={navigateCadastro}>
-        <Text style={styles.submitText}>Criar Conta</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Cadastro')}
+        style={{ marginTop: 20 }}
+      >
+        <Text style={{ color: '#555', fontSize: 16 }}>
+          Não tem uma conta? <Text style={{ color: '#00A8E8', fontWeight: 'bold' }}>Crie agora!</Text>
+        </Text>
       </TouchableOpacity>
     </View>
   );
