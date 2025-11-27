@@ -1,11 +1,13 @@
-import {View, Text, TextInput, TouchableOpacity, Alert} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import api from "../../services/api";
+import api from "../../services/apiAutenticacao";
 import { styles } from "./styles";
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { RootTabParamList } from '../../routes/AppRouter';
 
 export default function Cadastro() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<BottomTabNavigationProp<RootTabParamList>>();
 
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -18,36 +20,31 @@ export default function Cadastro() {
     }
 
     try {
-    const resposta = await api.post("/cadastro", {nome,email,senha});
-
-Alert.alert("Conta criada com sucesso!");
-
-      navigation.navigate("Login");
-
+      await api.post("/cadastro", { nome, email, senha });
+      Alert.alert("Conta criada com sucesso!");
+      navigation.navigate("Login"); 
     } catch (erro) {
-      alert("Erro ao cadastrar! Tente novamente.");
+      Alert.alert("Erro ao cadastrar! Tente novamente.");
     }
   }
 
   return (
     <View style={styles.container}>
-
       <View style={styles.areaInput}>
-        <TextInput placeholder="Seu nome" style={styles.input}value={nome}onChangeText={setNome}/>
+        <TextInput placeholder="Seu nome" style={styles.input} value={nome} onChangeText={setNome} />
       </View>
-
       <View style={styles.areaInput}>
-        <TextInput placeholder="Seu email" style={styles.input}value={email}onChangeText={setEmail}/>
+        <TextInput placeholder="Seu email" style={styles.input} value={email} onChangeText={setEmail} />
       </View>
-
       <View style={styles.areaInput}>
-        <TextInput placeholder="Sua senha" style={styles.input} value={senha}onChangeText={setSenha} secureTextEntry/>
+        <TextInput placeholder="Sua senha" style={styles.input} value={senha} onChangeText={setSenha} secureTextEntry />
       </View>
 
       <TouchableOpacity style={styles.submitButton} onPress={handleCadastro}>
         <Text style={styles.submitText}>Cadastrar</Text>
       </TouchableOpacity>
-
     </View>
+
+    
   );
 }

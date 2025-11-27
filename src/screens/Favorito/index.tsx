@@ -1,16 +1,12 @@
-// src/screens/Favorito/index.tsx
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './styles';
 
 export default function Favorito() {
-  // cidade digitada
   const [cidade, setCidade] = useState('');
-  // cidades favoritas
   const [favoritos, setFavoritos] = useState<string[]>([]);
 
-  // Carrega favoritos salvos ao abrir a tela
   useEffect(() => {
     const carregarFavoritos = async () => {
       try {
@@ -27,7 +23,6 @@ export default function Favorito() {
   }, []);
 
   const salvarCidade = async () => {
-    // Validação simples para não salvar vazio e evitar duplicados
     const cidadeTrim = cidade.trim();
     if (!cidadeTrim) {
       Alert.alert('Atenção', 'Digite uma cidade válida.');
@@ -48,7 +43,6 @@ export default function Favorito() {
     }
   };
 
-  // Remove uma cidade dos favoritos
   const removerCidade = async (nome: string) => {
     try {
       const atualizados = favoritos.filter(c => c !== nome);

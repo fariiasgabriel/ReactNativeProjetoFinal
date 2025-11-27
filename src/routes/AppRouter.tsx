@@ -1,39 +1,45 @@
-import { View, Text } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from "../screens/Home/Home";
-import Sobre from "../screens/Sobre/Sobre";
+
+import Home from "../screens/Home/";
+import Sobre from "../screens/Sobre/Sobre"; 
 import Login from "../screens/Login/Login";
+import Cadastro from "../screens/Cadastro/Cadastro";
+import Previsao from "../screens/Previsao/index";
+import Favorito from "../screens/Favorito/index"; 
+
 import { AuthContext } from '../context/AuthContext';
-import Teste from '../screens/Teste/Teste';
-import Cadastro from '../screens/Cadastro/Cadastro';
 
 export type RootTabParamList = {
-    Home:undefined;
-    Sobre:undefined;
-    Login:undefined;
-    Teste:undefined;
-    Cadastro:undefined;
-
+    Home: undefined;
+    Sobre: undefined;
+    Login: undefined;
+    Cadastro: undefined;
+    Previsao: { dias: any[] }; 
+    Favorito: undefined;
 };
 
-const Tab = createBottomTabNavigator<RootTabParamList>(); //cria navegação bottom tabs
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export default function AppRouter() {
-const {token} = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
+
   return (
-    <Tab.Navigator>
-        {!token ? ( //se não tem token
-      <Tab.Screen name="Login" component={Login}/>
-        ) : ( //caso tenha, executa o
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      {!token ? (
         <>
-      <Tab.Screen name="Home" component={Home}/>
-      <Tab.Screen name="Teste" component={Teste}/>
-      <Tab.Screen name="Sobre" component={Sobre}/>
-    </>
-    )}
-    <Tab.Screen name="Cadastro" component={Cadastro}/>
+          <Tab.Screen name="Login" component={Login} />
+          <Tab.Screen name="Cadastro" component={Cadastro} />
+        </>
+      ) : (
+        <>
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Sobre" component={Sobre} />
+          
+          <Tab.Screen name="Previsao" component={Previsao} />
+          <Tab.Screen name="Favorito" component={Favorito} />
+        </>
+      )}
     </Tab.Navigator>
-    
-  )
+  );
 }

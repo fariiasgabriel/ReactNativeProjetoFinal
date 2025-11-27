@@ -14,7 +14,6 @@ export default StyleSheet.create({
     color: '#003049',            
   },
 
-  // cidade
   input: {
     borderWidth: 1,               
     borderColor: '#B0C4DE',      
@@ -24,7 +23,6 @@ export default StyleSheet.create({
     marginBottom: 10,             
   },
 
-  // salvar cidade favorita
   botao: {
     backgroundColor: '#0077B6',   
     padding: 15,                   
@@ -33,14 +31,12 @@ export default StyleSheet.create({
     marginBottom: 20,             
   },
 
-  // Texto do botão
   textoBotao: {
     color: '#fff',                 
     fontWeight: 'bold',           
     fontSize: 16,                
   },
 
-  // Item da lista da cidade favorita
   item: {
     fontSize: 18,                  
     color: '#1D3557',              
